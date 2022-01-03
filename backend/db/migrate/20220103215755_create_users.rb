@@ -4,9 +4,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.integer :post_id
       t.integer :review_id
       t.string :name
-
     end
-    
-
   end
 end
