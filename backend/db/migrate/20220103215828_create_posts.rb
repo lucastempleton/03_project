@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :phone_number
       t.datetime :posted_at
       t.integer :user_id
-      t.integer :review_id
+      
     end
   end
 end

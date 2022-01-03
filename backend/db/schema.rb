@@ -19,17 +19,17 @@ ActiveRecord::Schema.define(version: 2022_01_03_215857) do
     t.string "location"
     t.string "phone_number"
     t.datetime "posted_at"
+    t.integer "user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "rating_number"
     t.string "rating_text"
     t.datetime "created_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "review_id"
     t.string "name"
   end
 
