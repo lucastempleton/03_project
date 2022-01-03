@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
-    belongs_to :review
-    belongs_to :post
+class User < ActiveRecord::Base
+    has_many :posts
+    has_many :reviews
 end
