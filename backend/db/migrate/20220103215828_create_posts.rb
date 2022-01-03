@@ -1,6 +1,6 @@
 class CreatePosts < ActiveRecord::Migration[6.1]
   def change
-    create_table do |t|
+    create_table :posts do |t|
       t.string  :title
       t.string :img_url
       t.string :description
