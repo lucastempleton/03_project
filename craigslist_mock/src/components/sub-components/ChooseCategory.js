@@ -1,4 +1,5 @@
 export default function ChooseCategory(){
+   
     return (
         <div>
             <select>
@@ -14,7 +15,7 @@ export default function ChooseCategory(){
                 <option onClick={null}>Bicycyle Parts</option>
                 <option onClick={null}>Boat Parts</option>
                 <option onClick={null}>Books/Magazines</option>
-                <option onClick={null}>Business/Commericial</option>
+                <option onClick={null}>Business/Commercial</option>
                 <option onClick={null}>Cars/Trucks</option>
                 <option onClick={null}>CD's/DVD's/VHS</option>
                 <option onClick={null}>Cell Phones</option>
