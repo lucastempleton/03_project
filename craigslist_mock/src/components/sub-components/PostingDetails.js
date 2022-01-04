@@ -10,6 +10,15 @@ export default function PostingDetails(){
                     <p>size / dimensions</p>
                     <input></input>
                     <p>condition</p>
+                    <option>
+                        <select>-</select>
+                        <select>new</select>
+                        <select>like new</select>
+                        <select>execellent</select>
+                        <select>good</select>
+                        <select>fair</select>
+                        <select>salvage</select>
+                    </option>
         </div>
     )
 }
