@@ -35,6 +35,18 @@ export default function Post (){
         let key = e.target.name
         setNewPost({...newPost, [key]: e.target.value})
     }
+    function handleDetails(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['details']:{...newPost['details'], [key]: e.target.value}})
+    }
+    function handleContact(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], [key]: e.target.value}})
+    }
+    function handlePhone(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['phoneNumber']: {[key]: e.target.value}}})
+    }
 
     return(
         <div>
@@ -52,8 +64,8 @@ export default function Post (){
                     <input type="text" name="zipcode" onChange={(e) => handlePost(e)} value={newPost.zipcode}></input>
                     <p>description</p>
                     <input type="text" name="description" onChange={(e) => handlePost(e)} value={newPost.description}></input>
-                    <PostingDetails/>
-                    <ContactInfo/>
+                    <PostingDetails newPost={newPost} handlePost={handleDetails}/>
+                    <ContactInfo newPost={newPost} handlePost={handleContact} handlePhone={handlePhone}/>
                     <label>
                         <input type="checkbox" />
                          ok for others to contact you about other services, products or commercial interests

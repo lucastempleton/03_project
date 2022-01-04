@@ -11,7 +11,5 @@ export default function Homepage(){
             <button type="button">Log in</button>           
             <h2> Buy or sell easy</h2>
         </div>
-    function   
     )
-
 }
