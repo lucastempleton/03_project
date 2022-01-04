@@ -1,14 +1,14 @@
 
-export default function PostingDetails(){
+export default function PostingDetails({ newPost, handlePost}){
     return(
         <div>
             <h3>posting details</h3>
                     <p>make / manufacturer</p>
-                    <input></input>
+                    <input type="text" name="make" onChange={(e) => handlePost(e)} value={newPost.details.make}></input>
                     <p>model name / number</p>
-                    <input></input>
+                    <input type="text" name="model" onChange={(e) => handlePost(e)} value={newPost.details.model}></input>
                     <p>size / dimensions</p>
-                    <input type="text" placeholder="length x width x height"></input>
+                    <input type="text" placeholder="length x width x height" name="size" onChange={(e) => handlePost(e)} value={newPost.details.size}></input>
                     <p>condition</p>
                     <select>
                         <option>-</option>

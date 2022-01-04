@@ -7,6 +7,7 @@ export default function Post (){
     const [newPost, setNewPost] = useState({
         category: "",
         title: "",
+        price: "",
         city: "",
         zipcode: null,
         description: "",
@@ -35,31 +36,50 @@ export default function Post (){
         let key = e.target.name
         setNewPost({...newPost, [key]: e.target.value})
     }
+    function handleDetails(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['details']:{...newPost['details'], [key]: e.target.value}})
+    }
+    function handleContact(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['contact_info']: {[key]: e.target.value}}})
+    }
+    function handlePhone(e){
+        let key = e.target.name
+        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['phoneNumber']: {[key]: e.target.value}}})
+    }
+    function handleSubmit(e){
+        e.preventDefault()
+
+        console.log(newPost)
+
+        e.parentNode.reset()
+    }
 
     return(
         <div>
             <form>
                 <div className="category">Category</div>
                 <ChooseCategory />
-                <form>
+                
                     <p>posting title</p>
                     <input type="text" name="title" onChange={(e) => handlePost(e)} value={newPost.title}></input>
                     <p>price</p>
-                    <input></input>
+                    <input type="text" name="price" onChange={(e) => handlePost(e)} value={newPost.price}></input>
                     <p>city or neighborhood</p>
                     <input type="text" name="city" onChange={(e) => handlePost(e)} value={newPost.city}></input>
                     <p>postal code</p>
                     <input type="text" name="zipcode" onChange={(e) => handlePost(e)} value={newPost.zipcode}></input>
                     <p>description</p>
                     <input type="text" name="description" onChange={(e) => handlePost(e)} value={newPost.description}></input>
-                    <PostingDetails/>
-                    <ContactInfo/>
+                    <PostingDetails newPost={newPost} handlePost={handleDetails}/>
+                    <ContactInfo newPost={newPost} handlePost={handleContact} handlePhone={handlePhone}/>
                     <label>
                         <input type="checkbox" />
                          ok for others to contact you about other services, products or commercial interests
                     </label>
-                    <button type="submit">continue</button>
-                </form>
+                    <button type="submit" onClick={(e) => handleSubmit(e)}>continue</button>
+                
             </form>
         </div>
     )

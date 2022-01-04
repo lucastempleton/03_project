@@ -11,6 +11,7 @@ export default function Homepage(){
             alt=""
             />               
             <h2> Buy or sell easy</h2>
+<<<<<<< HEAD
         </div>   
         
     );
@@ -33,3 +34,8 @@ export default function Homepage(){
     //     </div>
     //     );
     // }
+=======
+        </div>
+    )
+}
+>>>>>>> 071a84cde45fb14eb339d948940ab4be875225c0
