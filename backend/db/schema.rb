@@ -10,15 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_215857) do
+ActiveRecord::Schema.define(version: 2022_01_04_222502) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "phone_id"
+    t.string "email"
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.boolean "cryptocurrency"
+    t.boolean "delivery"
+    t.boolean "reviewDisplay"
+    t.string "make"
+    t.string "model"
+    t.string "size"
+    t.string "condition"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.boolean "showNumber"
+    t.boolean "canCall"
+    t.boolean "canText"
+    t.string "number"
+    t.string "extension"
+    t.string "name"
+  end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
     t.string "img_url"
+    t.string "category"
+    t.string "title"
+    t.string "price"
+    t.string "city"
+    t.string "zipcode"
     t.string "description"
-    t.string "location"
-    t.string "phone_number"
     t.datetime "posted_at"
+    t.integer "detail_id"
+    t.integer "contact_id"
     t.integer "user_id"
   end
 
@@ -31,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_215857) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.string "contact_id"
   end
 
 end

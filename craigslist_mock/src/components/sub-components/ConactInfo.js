@@ -1,10 +1,12 @@
 
-export default function ContactInfo({newPost, handlePost, handlePhone}){
+export default function ContactInfo({newPost, handleContact, handlePhone}){
     
     return (
         <div>
             <p>email</p>
-            <input type="text" placeholder="Your email address" name="email" onChange={(e) => handlePost(e)} value={newPost.contact_info.email}/>
+            <input type="text" placeholder="Your email address" name="email" 
+            onChange={(e) => handleContact(e)} 
+            value={newPost.contact_info.email}></input>
             <div>
                 <p>phone/text</p>
                     <label>
@@ -22,7 +24,12 @@ export default function ContactInfo({newPost, handlePost, handlePhone}){
                          text/sms OK
                     </label>
                 <p>phone number</p>
-                <input type="text" name="number" onChange={(e) => handlePhone(e)} value={newPost.contact_info.phoneNumber.number} />
+                <input type="text" 
+                name="number" 
+                onChange={(e) => handlePhone(e)} 
+                value={newPost.contact_info.phoneNumber.number}>
+                    
+                </input>
                 <p>extension</p>
                 <input type="text" name="extension" onChange={(e) => handlePhone(e)} value={newPost.contact_info.phoneNumber.extension}></input>
                 <p>contact name</p>
