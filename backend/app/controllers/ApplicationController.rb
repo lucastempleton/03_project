@@ -9,13 +9,13 @@ class ApplicationController < Sinatra::Base
     get "/posts/:id" do
         Post.find(params[:id]).to_json
     end
-    get "/review" do
+    get "/reviews" do
         Review.all.to_json
     end
-    get "/review/:id" do
+    get "/reviews/:id" do
         Review.find(params[:id]).to_json
     end
-    et "/users" do
+    get "/users" do
         User.all.to_json
     end
     get "/users/:id" do

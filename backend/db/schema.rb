@@ -10,16 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_215857) do
+ActiveRecord::Schema.define(version: 2022_01_04_222502) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "phone_id"
+    t.string "email"
+    t.index ["phone_id"], name: "index_contacts_on_phone_id"
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.boolean "cryptocurrency"
+    t.boolean "delivery"
+    t.boolean "reviewDisplay"
+    t.string "make"
+    t.string "model"
+    t.string "size"
+    t.string "condition"
+  end
+
+  create_table "phones", force: :cascade do |t|
+    t.boolean "showNumber"
+    t.boolean "canCall"
+    t.boolean "canText"
+    t.string "number"
+    t.string "extension"
+    t.string "name"
+  end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
     t.string "img_url"
+    t.string "category"
+    t.string "title"
+    t.string "price"
+    t.string "city"
+    t.string "zipcode"
     t.string "description"
-    t.string "location"
-    t.string "phone_number"
     t.datetime "posted_at"
+    t.integer "detail_id"
+    t.integer "contact_id"
     t.integer "user_id"
+    t.index ["contact_id"], name: "index_posts_on_contact_id"
+    t.index ["detail_id"], name: "index_posts_on_detail_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -27,10 +59,13 @@ ActiveRecord::Schema.define(version: 2022_01_03_215857) do
     t.integer "rating_number"
     t.string "rating_text"
     t.datetime "created_at"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.integer "contact_id"
+    t.index ["contact_id"], name: "index_users_on_contact_id"
   end
 
 end

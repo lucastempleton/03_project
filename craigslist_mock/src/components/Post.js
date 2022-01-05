@@ -26,8 +26,8 @@ export default function Post (){
                 showNumber: false,
                 canCall: false,
                 canText: false,
-                number: "(309)999-9999",
-                extension: null,
+                number: "",
+                extension: "",
                 name: ""
             }
         }
@@ -42,11 +42,13 @@ export default function Post (){
     }
     function handleContact(e){
         let key = e.target.name
-        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['contact_info']: {[key]: e.target.value}}})
+        setNewPost({...newPost, ['contact_info']:{ [key]: e.target.value}})
+        console.log(newPost)
     }
     function handlePhone(e){
         let key = e.target.name
         setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['phoneNumber']: {[key]: e.target.value}}})
+        
     }
     function handleSubmit(e){
         e.preventDefault()
@@ -73,7 +75,7 @@ export default function Post (){
                     <p>description</p>
                     <input type="text" name="description" onChange={(e) => handlePost(e)} value={newPost.description}></input>
                     <PostingDetails newPost={newPost} handlePost={handleDetails}/>
-                    <ContactInfo newPost={newPost} handlePost={handleContact} handlePhone={handlePhone}/>
+                    <ContactInfo newPost={newPost} handleContact={handleContact} handlePhone={handlePhone}/>
                     <label>
                         <input type="checkbox" />
                          ok for others to contact you about other services, products or commercial interests

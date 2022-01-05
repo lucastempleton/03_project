@@ -1,6 +1,7 @@
 .SearchBar {
   height: 60px;
-  display: flex;
+  display: -webkit-flex;
+  flex: 1;
   align-items: center;
   background-color: rgba(4, 83, 129, 0.393);
   position: sticky;
@@ -14,10 +15,9 @@
   margin-top: 18px;
 }
 .Search_input {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  border-radius: 24px;
+  padding: 5px;
+  height: 10px;
+  background-color: rgb(225, 225, 244)
 }
 .Search_nav {
   display: flex;

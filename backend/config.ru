@@ -12,3 +12,9 @@ end
 use Rack::JSONBodyParser
 
 run ApplicationController
+use ContactController
+use DetailController
+use PhoneController
+use PostController
+use ReviewController
+use UserController

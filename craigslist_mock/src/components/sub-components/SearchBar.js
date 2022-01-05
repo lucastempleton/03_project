@@ -11,7 +11,7 @@ function SearchBar() {
         
         <div className="search_nav"></div>
          <div className="search_signin">
-           <span className="search_signinLineOne">Sign In</span>
+           <span className="search_signinLineOne"> Sign In </span>
          </div>
          
          
