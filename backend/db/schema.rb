@@ -13,8 +13,9 @@
 ActiveRecord::Schema.define(version: 2022_01_04_222502) do
 
   create_table "contacts", force: :cascade do |t|
-    t.string "phone_id"
+    t.integer "phone_id"
     t.string "email"
+    t.index ["phone_id"], name: "index_contacts_on_phone_id"
   end
 
   create_table "details", force: :cascade do |t|
@@ -48,6 +49,9 @@ ActiveRecord::Schema.define(version: 2022_01_04_222502) do
     t.integer "detail_id"
     t.integer "contact_id"
     t.integer "user_id"
+    t.index ["contact_id"], name: "index_posts_on_contact_id"
+    t.index ["detail_id"], name: "index_posts_on_detail_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -55,11 +59,13 @@ ActiveRecord::Schema.define(version: 2022_01_04_222502) do
     t.integer "rating_number"
     t.string "rating_text"
     t.datetime "created_at"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "contact_id"
+    t.integer "contact_id"
+    t.index ["contact_id"], name: "index_users_on_contact_id"
   end
 
 end

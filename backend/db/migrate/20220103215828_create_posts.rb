@@ -10,9 +10,9 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :description
       t.datetime :posted_at
 
-      t.integer :detail_id
-      t.integer :contact_id
-      t.integer :user_id
+      t.references :detail
+      t.references :contact
+      t.references :user
       
     end
   end
