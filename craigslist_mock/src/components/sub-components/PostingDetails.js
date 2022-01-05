@@ -1,14 +1,14 @@
 
-export default function PostingDetails({ newPost, handlePost}){
+export default function PostingDetails({ newDetails, handlePost}){
     return(
         <div>
             <h3>posting details</h3>
                     <p>make / manufacturer</p>
-                    <input type="text" name="make" onChange={(e) => handlePost(e)} value={newPost.details.make}></input>
+                    <input type="text" name="make" onChange={(e) => handlePost(e)} value={newDetails.make}></input>
                     <p>model name / number</p>
-                    <input type="text" name="model" onChange={(e) => handlePost(e)} value={newPost.details.model}></input>
+                    <input type="text" name="model" onChange={(e) => handlePost(e)} value={newDetails.model}></input>
                     <p>size / dimensions</p>
-                    <input type="text" placeholder="length x width x height" name="size" onChange={(e) => handlePost(e)} value={newPost.details.size}></input>
+                    <input type="text" placeholder="length x width x height" name="size" onChange={(e) => handlePost(e)} value={newDetails.size}></input>
                     <p>condition</p>
                     <select>
                         <option>-</option>
@@ -25,17 +25,17 @@ export default function PostingDetails({ newPost, handlePost}){
                     </select>
                     <br/>
                     <label>
-                        <input type="checkbox" />
+                        <input onClick={(e)=>handlePost(e)} type="checkbox" name="cryptocurrency" value={!newDetails.cryptocurrency} />
                          cryptocurrency ok
                     </label>
                     <br/>
                     <label>
-                        <input type="checkbox" />
+                        <input onClick={(e)=>handlePost(e)} type="checkbox" name="delivery" value={!newDetails.delivery} />
                          delivery available
                     </label>
                     <br/>
                     <label>
-                        <input type="checkbox" />
+                        <input onClick={(e)=>handlePost(e)} type="checkbox" name="reviewDisplay" value={!newDetails.reviewDisplay} />
                          include "reviews by this user" on bottom
                     </label>
         </div>

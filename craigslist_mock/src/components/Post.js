@@ -3,34 +3,41 @@ import ChooseCategory from "./sub-components/ChooseCategory"
 import PostingDetails from "./sub-components/PostingDetails"
 import ContactInfo from "./sub-components/ConactInfo"
 
-export default function Post (){
+export default function Post ({details, phones, contacts, posts}){
+    const [newDetails, setNewDetails] = useState({
+        id: details.length + 2,
+        cryptocurrency: false,
+        delivery: false,
+        reviewDisplay: false,
+        make: "",
+        model: "",
+        size: "",
+        condition: "",
+    });
+    const [newPhone, setNewPhone] = useState({
+        id: phones.length + 2,
+        showNumber: false,
+        canCall: false,
+        canText: false,
+        number: "",
+        extension: "",
+        name: "",
+    });
+    const [newContact, setNewContact] = useState({
+        id: contacts.length + 2,
+        email: "",
+        phone_id: newPhone.id
+    })
     const [newPost, setNewPost] = useState({
+        id: posts.length + 2,
         category: "",
         title: "",
         price: "",
         city: "",
-        zipcode: null,
+        zipcode: "",
         description: "",
-        details: {
-            cryptocurrency: false,
-            delivery: false,
-            reviewDisplay: false,
-            make: "",
-            model: "",
-            size: "",
-            condition: "",
-        },
-        contact_info:{
-            email: "",
-            phoneNumber: {
-                showNumber: false,
-                canCall: false,
-                canText: false,
-                number: "",
-                extension: "",
-                name: ""
-            }
-        }
+        detail_id: newDetails.id,
+        contact_id: newContact.id,
     })
     function handlePost(e){
         let key = e.target.name
@@ -38,24 +45,26 @@ export default function Post (){
     }
     function handleDetails(e){
         let key = e.target.name
-        setNewPost({...newPost, ['details']:{...newPost['details'], [key]: e.target.value}})
+        setNewDetails({...newDetails, [key]: e.target.value})
+        console.log(newDetails)
     }
     function handleContact(e){
         let key = e.target.name
-        setNewPost({...newPost, ['contact_info']:{ [key]: e.target.value}})
-        console.log(newPost)
+        setNewContact({...newContact, [key]: e.target.value})
     }
     function handlePhone(e){
         let key = e.target.name
-        setNewPost({...newPost, ['contact_info']:{...newPost['contract_info'], ['phoneNumber']: {[key]: e.target.value}}})
-        
+        setNewPhone({...newPhone, [key]: e.target.value})
     }
     function handleSubmit(e){
         e.preventDefault()
 
         console.log(newPost)
+        console.log(newDetails)
+        console.log(newPhone)
+        console.log(newContact)
 
-        e.parentNode.reset()
+    
     }
 
     return(
@@ -74,8 +83,8 @@ export default function Post (){
                     <input type="text" name="zipcode" onChange={(e) => handlePost(e)} value={newPost.zipcode}></input>
                     <p>description</p>
                     <input type="text" name="description" onChange={(e) => handlePost(e)} value={newPost.description}></input>
-                    <PostingDetails newPost={newPost} handlePost={handleDetails}/>
-                    <ContactInfo newPost={newPost} handleContact={handleContact} handlePhone={handlePhone}/>
+                    <PostingDetails newDetails={newDetails} handlePost={handleDetails}/>
+                    <ContactInfo newPhone={newPhone} newContact = {newContact} handleContact={handleContact} handlePhone={handlePhone}/>
                     <label>
                         <input type="checkbox" />
                          ok for others to contact you about other services, products or commercial interests
