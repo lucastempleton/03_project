@@ -1,4 +1,10 @@
- export default function Product({post}){
+ export default function PostRender({post}){
+        function deletion () {
+            fetch(`http://localhost:9292/posts/${post.id}`, {
+              method: "DELETE"
+            })
+            //route to refresh/return to the product listing page
+          }
         return( 
         <div ClassName="product">
             <div ClassName="product_info">
@@ -29,14 +35,8 @@
                 <p>{post.details.phoneNumber.name}</p>
                 </div>
         </div>
-        <img src="https://"alt=""/>
-        <button>Buy</button>
+        <img src={post.img_url} alt=""/>
+        <button onClick={()=>deletion()}>Buy</button>
         </div>
         );
-        function Deletion (product) {
-            fetch(`http://localhost:9292/product/${product.id}`, {
-              method: "DELETE"
-            })
-            deleteFromState(item)
-          }
     } 
