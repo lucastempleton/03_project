@@ -11,15 +11,19 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [postToRender, setPostToRender] = useState({});
   function changePostToRender(p){
-    setPostToRender(p)
+    let obj = posts.find(el=> el = p.id);
+    console.log('i am parameter id', p.id)
+    console.log(posts)
+    console.log(obj)
+    setPostToRender({...obj})
   }
+  console.log(postToRender)
   
   const fetchRequest = () => {
     fetch ('http://localhost:9292/posts')
     .then(r => r.json())
     .then(data => {
       setPosts(data)
-      setPostToRender(data[0])
     })
   }
   useEffect(() => {
@@ -30,7 +34,7 @@ function App() {
       <Routes> 
         
         <Route path="/postrender" element={<PostRender post={postToRender}/>}/>
-        <Route path="/postslist" element={<PostsList posts={posts} />}/>
+        <Route path="/postslist" element={<PostsList posts={posts} changePostToRender={changePostToRender} />}/>
         <Route path="/post" element={<Post posts={posts} />}/>
         <Route exact path="/" element={<HomePage />}/>
 

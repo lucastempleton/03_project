@@ -1,14 +1,16 @@
  export default function PostRender({post}){
-        console.log(post)
+        console.log('i am being passed into postrender', post)
         function deletion () {
             fetch(`http://localhost:9292/posts/${post.id}`, {
               method: "DELETE"
             })
+            .then(r=>r.json())
+            .then(data => console.log(data))
             //route to refresh/return to the product listing page
           }
-          if (post = {}) {
-            return(
-                <h1>Loading....</h1>
+        if (Object.keys(post).length === 0) {
+          return(
+              <h1>Loading....</h1>
             )
         }
         else
@@ -44,7 +46,7 @@
                 </div>
         </div>
         <img src={post.img_url} alt=""/>
-        <button onClick={()=>deletion()}>Buy</button>
+        <button onClick={()=>deletion()}><a href='/'>Buy</a></button>
         </div>
         );
     } 

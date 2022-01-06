@@ -1,7 +1,7 @@
 import RenderListings from "./sub-components/RenderListings"
 
 export default function PostsList ({posts, changePostToRender}){
-    if (posts.length <= 1){
+    if (posts.length < 1){
         return(
             <h1>Loading....</h1>
         )
@@ -9,12 +9,10 @@ export default function PostsList ({posts, changePostToRender}){
     else
     return(
         <div className="product-list">
-            {console.log(posts)}
         {
             
             posts.map(p => {
-                {console.log(p)}
-                return <RenderListings key={p.id} post={p} />
+                return <RenderListings key={p.id} post={p} changePostToRender={changePostToRender}/>
             })
         }
 
