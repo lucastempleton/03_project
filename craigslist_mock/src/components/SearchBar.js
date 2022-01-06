@@ -14,7 +14,6 @@ function SearchBar() {
            <span className="search_signinLineOne"> Sign In </span>
          </div>
          
-         
         </div>
     );
 }

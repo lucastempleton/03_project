@@ -3,8 +3,10 @@ import Post from "./components/Post";
 import PostsList from './components/PostsList'
 import PostRender from "./components/PostRender"
 import HomePage from './components/Homepage'
+import SearchBar from './components/SearchBar'
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import {Route,Routes, Link} from 'react-router-dom'
+
 
 
 function App() {
@@ -30,17 +32,21 @@ function App() {
     fetchRequest();
   },[])
   return (
-      
-      <Routes> 
-        
+      <div>
+        <nav>
+          <Link to ="/"> Home </Link>
+          <Link to ="/postslist"> Listings </Link>
+          <Link to ="/post"> Create a new post </Link>
+        </nav>
+        <Routes> 
         <Route path="/postrender" element={<PostRender post={postToRender}/>}/>
         <Route path="/postslist" element={<PostsList posts={posts} changePostToRender={changePostToRender} />}/>
         <Route path="/post" element={<Post posts={posts} />}/>
+        <Route exact path="/" element={<SearchBar />}/>
         <Route exact path="/" element={<HomePage />}/>
-
-
-      </Routes>
-
+        </Routes>
+       <div> Footer </div>
+      </div>
 
 
     
