@@ -11,13 +11,13 @@
                 <p ClassName="product_price">
                     <small>$</small>
                     <strong>{post.price}</strong>
-                    <p>{post.details.cryptocurrency}</p>
-                    <p>{post.details.delivery}</p>
-                    <p>{post.details.reviewDisplay}</p>
-                    <p>{post.details.make}</p>
-                    <p>{post.details.model}</p>
-                    <p>{post.details.size}</p>
-                    <p>{post.details.condition}</p>
+                    <p>{post.nested_data.details.cryptocurrency}</p>
+                    <p>{post.nested_data.details.delivery}</p>
+                    <p>{post.nested_data.details.reviewDisplay}</p>
+                    <p>{post.nested_data.details.make}</p>
+                    <p>{post.nested_data.details.model}</p>
+                    <p>{post.nested_data.details.size}</p>
+                    <p>{post.nested_data.details.condition}</p>
                 </p>
                 <div ClassName="contact_info">
                 <p>{post.details.email}</p>
@@ -33,4 +33,10 @@
         <button>Buy</button>
         </div>
         );
+        function Deletion (product) {
+            fetch(`http://localhost:9292/product/${product.id}`, {
+              method: "DELETE"
+            })
+            deleteFromState(item)
+          }
     } 
