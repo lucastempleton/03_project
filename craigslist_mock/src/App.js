@@ -19,6 +19,7 @@ function App() {
     .then(r => r.json())
     .then(data => {
       setPosts(data)
+      setPostToRender(data[0])
     })
   }
   useEffect(() => {
@@ -28,8 +29,8 @@ function App() {
       
       <Routes> 
         
-        <Route path="/postrender" element={<PostRender postToRender={postToRender}/>}/>
-        <Route path="/postslist" element={<PostsList posts={posts} changePostToRender={changePostToRender} />}/>
+        <Route path="/postrender" element={<PostRender post={postToRender}/>}/>
+        <Route path="/postslist" element={<PostsList posts={posts} />}/>
         <Route path="/post" element={<Post posts={posts} />}/>
         <Route exact path="/" element={<HomePage />}/>
 

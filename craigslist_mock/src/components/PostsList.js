@@ -17,7 +17,7 @@ export default function PostsList ({posts, changePostToRender}){
                 return <RenderListings key={p.id} post={p} />
             })
         }
-        <h1>not working</h1>
+
         </div>
     )
 }

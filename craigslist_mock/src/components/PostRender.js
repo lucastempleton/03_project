@@ -5,6 +5,12 @@
             })
             //route to refresh/return to the product listing page
           }
+          if (post = {}){
+            return(
+                <h1>Loading....</h1>
+            )
+        }
+        else
         return( 
         <div ClassName="product">
             <div ClassName="product_info">
@@ -26,6 +32,7 @@
                     <p>{post.nested_data.details.condition}</p>
                 </p>
                 <div ClassName="contact_info">
+                  <p>email:</p>
                 <p>{post.details.email}</p>
                 <p>{post.details.phoneNumber.showNumber}</p>
                 <p>{post.details.phoneNumber.canCall}</p>
