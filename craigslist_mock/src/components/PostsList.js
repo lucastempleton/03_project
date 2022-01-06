@@ -14,9 +14,10 @@ export default function PostsList ({posts, changePostToRender}){
             
             posts.map(p => {
                 {console.log(p)}
-                <RenderListings post={p} />
+                <RenderListings key={p.id} post={p} />
             })
         }
+        <h1>not working</h1>
         </div>
     )
 }
