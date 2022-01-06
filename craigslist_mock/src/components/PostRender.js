@@ -1,18 +1,19 @@
  export default function PostRender({post}){
+        console.log(post)
         function deletion () {
             fetch(`http://localhost:9292/posts/${post.id}`, {
               method: "DELETE"
             })
             //route to refresh/return to the product listing page
           }
-          if (post = {}){
+          if (post = {}) {
             return(
                 <h1>Loading....</h1>
             )
         }
         else
         return( 
-        <div ClassName="product">
+        <div className="product">
             <div ClassName="product_info">
                 <p>{post.category}</p>
                 <p>{post.title}</p>
@@ -20,7 +21,7 @@
                 <p>{post.city}</p>
                 <p>{post.zipcode}</p>
                 <p>{post.description}</p>
-                <p ClassName="product_price">
+                <p className="product_price">
                     <small>$</small>
                     <strong>{post.price}</strong>
                     <p>{post.nested_data.details.cryptocurrency}</p>
@@ -31,15 +32,15 @@
                     <p>{post.nested_data.details.size}</p>
                     <p>{post.nested_data.details.condition}</p>
                 </p>
-                <div ClassName="contact_info">
+                <div className="contact_info">
                   <p>email:</p>
-                <p>{post.details.email}</p>
-                <p>{post.details.phoneNumber.showNumber}</p>
-                <p>{post.details.phoneNumber.canCall}</p>
-                <p>{post.details.phoneNumber.canText}</p>
-                <p>{post.details.phoneNumber.number}</p>
-                <p>{post.details.phoneNumber.extension}</p>
-                <p>{post.details.phoneNumber.name}</p>
+                <p>{post.nested_data.contact.email}</p>
+                <p>{post.nested_data.phone.showNumber}</p>
+                <p>{post.nested_data.phone.canCall}</p>
+                <p>{post.nested_data.phone.canText}</p>
+                <p>{post.nested_data.phone.number}</p>
+                <p>{post.nested_data.phone.extension}</p>
+                <p>{post.nested_data.phone.name}</p>
                 </div>
         </div>
         <img src={post.img_url} alt=""/>
