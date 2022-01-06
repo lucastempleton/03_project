@@ -3,9 +3,10 @@ import ChooseCategory from "./sub-components/ChooseCategory"
 import PostingDetails from "./sub-components/PostingDetails"
 import ContactInfo from "./sub-components/ConactInfo"
 
-export default function Post ({details, phones, contacts, posts}){
+export default function Post ({posts}){
+    let idNumber = posts.length
     const [newDetails, setNewDetails] = useState({
-        id: details.length + 2,
+        id: idNumber,
         cryptocurrency: false,
         delivery: false,
         reviewDisplay: false,
@@ -15,7 +16,7 @@ export default function Post ({details, phones, contacts, posts}){
         condition: "",
     });
     const [newPhone, setNewPhone] = useState({
-        id: phones.length + 2,
+        id: idNumber,
         showNumber: false,
         canCall: false,
         canText: false,
@@ -24,12 +25,12 @@ export default function Post ({details, phones, contacts, posts}){
         name: "",
     });
     const [newContact, setNewContact] = useState({
-        id: contacts.length + 2,
+        id: idNumber,
         email: "",
         phone_id: newPhone.id
     })
     const [newPost, setNewPost] = useState({
-        id: posts.length + 2,
+        id: idNumber,
         category: "",
         title: "",
         price: "",
