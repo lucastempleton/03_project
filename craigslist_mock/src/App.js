@@ -33,8 +33,6 @@ function App() {
     fetchRequest('posts');
     fetchRequest('phones');
     fetchRequest('contacts')
-    console.log(details)
-    console.log(posts)
   },[])
   return (
     <div className="App">
