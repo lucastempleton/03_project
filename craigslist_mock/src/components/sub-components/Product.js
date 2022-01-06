@@ -1,4 +1,4 @@
- export default function product({post}){
+ export default function Product({post}){
         return( 
         <div ClassName="product">
             <div ClassName="product_info">
@@ -8,7 +8,6 @@
                 <p>{post.city}</p>
                 <p>{post.zipcode}</p>
                 <p>{post.description}</p>
-                <p>{post.details}</p>
                 <p ClassName="product_price">
                     <small>$</small>
                     <strong>{post.price}</strong>
