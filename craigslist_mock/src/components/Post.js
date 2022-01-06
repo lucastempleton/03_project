@@ -46,7 +46,6 @@ export default function Post ({details, phones, contacts, posts}){
     function handleDetails(e){
         let key = e.target.name
         setNewDetails({...newDetails, [key]: e.target.value})
-        console.log(newDetails)
     }
     function handleContact(e){
         let key = e.target.name
@@ -63,6 +62,34 @@ export default function Post ({details, phones, contacts, posts}){
         console.log(newDetails)
         console.log(newPhone)
         console.log(newContact)
+        fetch("http://localhost:9292/posts",{
+            method: "POST",
+            headers: {"content-type" : "application/json"},
+            body: JSON.stringify(newPost)
+        })
+        .then(r=>r.json())
+        .then(log => console.log(log))
+        fetch("http://localhost:9292/phones",{
+            method: "POST",
+            headers: {"content-type" : "application/json"},
+            body: JSON.stringify(newPhone)
+        })
+        .then(r=>r.json())
+        .then(log => console.log(log))
+        fetch("http://localhost:9292/contacts",{
+            method: "POST",
+            headers: {"content-type" : "application/json"},
+            body: JSON.stringify(newContact)
+        })
+        .then(r=>r.json())
+        .then(log => console.log(log))
+        fetch("http://localhost:9292/details",{
+            method: "POST",
+            headers: {"content-type" : "application/json"},
+            body: JSON.stringify(newDetails)
+        })
+        .then(r=>r.json())
+        .then(log => console.log(log))
 
     
     }
