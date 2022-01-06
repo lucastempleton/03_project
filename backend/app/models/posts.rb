@@ -6,11 +6,7 @@ class Post < ActiveRecord::Base
 
 
     def nested_data
-        nested_detail = self.detail
-        nested_user = self.user
-        nested_contact = self.contact
-        nested_phone = self.contact.phone
-
+    
         nested_data = { 
 
             details: self.detail,

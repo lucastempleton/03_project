@@ -4,9 +4,8 @@ import PostingDetails from "./sub-components/PostingDetails"
 import ContactInfo from "./sub-components/ConactInfo"
 
 export default function Post ({posts}){
-    let idNumber = posts.length
     const [newDetails, setNewDetails] = useState({
-        id: idNumber,
+        
         cryptocurrency: false,
         delivery: false,
         reviewDisplay: false,
@@ -16,7 +15,7 @@ export default function Post ({posts}){
         condition: "",
     });
     const [newPhone, setNewPhone] = useState({
-        id: idNumber,
+        
         showNumber: false,
         canCall: false,
         canText: false,
@@ -25,14 +24,15 @@ export default function Post ({posts}){
         name: "",
     });
     const [newContact, setNewContact] = useState({
-        id: idNumber,
+        
         email: "",
         phone_id: newPhone.id
     })
     const [newPost, setNewPost] = useState({
-        id: idNumber,
+        
         category: "",
         title: "",
+        img_url: "",
         price: "",
         city: "",
         zipcode: "",
@@ -94,6 +94,12 @@ export default function Post ({posts}){
 
     
     }
+    if (posts.length === 0) {
+        return(
+            <h1>Loading....</h1>
+          )
+      }
+      else
 
     return(
         <div>
@@ -103,6 +109,8 @@ export default function Post ({posts}){
                 
                     <p>posting title</p>
                     <input type="text" name="title" onChange={(e) => handlePost(e)} value={newPost.title}></input>
+                    <p>posting image URL</p>
+                    <input type="text" name="img_url" onChange={(e) => handlePost(e)} value={newPost.img_url}></input>
                     <p>price</p>
                     <input type="text" name="price" onChange={(e) => handlePost(e)} value={newPost.price}></input>
                     <p>city or neighborhood</p>
