@@ -11,7 +11,7 @@ export default function PostsList ({posts, changePostToRender}){
         {
             posts.map(post => {
                 <div className="product-listing">
-                    <a href="/postrender" onClick={changePostToRender(post)}>
+                    <a href="/postrender" onClick={()=>changePostToRender(post)}>
                     <img src={post.img_url} alt={post.title} />
                     <h1>{post.title}</h1>
                     <h2>{post.city}</h2>
@@ -19,6 +19,7 @@ export default function PostsList ({posts, changePostToRender}){
                 </div>
             })
         }
+        <h1>should be loading</h1>
         </div>
     )
 }
