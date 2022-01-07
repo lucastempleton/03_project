@@ -1,3 +1,23 @@
 .App {
   text-align: center;
 }
+.home-container {
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  padding: 10px;
+  grid-template-areas: 2fr 5fr 1fr / 1fr 3fr 1fr
+}
+.home-button{
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+.post-button{
+  grid-row: 1 / 1;
+  grid-column: 3 / 3;
+}
+.postings-button{
+  grid-row: 1 / 1;
+  grid-column: 2 / 2;
+}

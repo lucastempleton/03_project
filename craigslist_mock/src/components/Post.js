@@ -5,8 +5,8 @@ import ContactInfo from "./sub-components/ConactInfo"
 
 export default function Post ({posts}){
     const [newDetails, setNewDetails] = useState({
-        
-        cryptocurrency: false,
+        id: posts.length + 1,
+        cryptocurrency: false, 
         delivery: false,
         reviewDisplay: false,
         make: "",
@@ -15,7 +15,7 @@ export default function Post ({posts}){
         condition: "",
     });
     const [newPhone, setNewPhone] = useState({
-        
+        id: posts.length + 1,
         showNumber: false,
         canCall: false,
         canText: false,
@@ -24,12 +24,12 @@ export default function Post ({posts}){
         name: "",
     });
     const [newContact, setNewContact] = useState({
-        
+        id: posts.length + 1,
         email: "",
         phone_id: newPhone.id
     })
     const [newPost, setNewPost] = useState({
-        
+        id: posts.length + 1,
         category: "",
         title: "",
         img_url: "",
@@ -40,6 +40,11 @@ export default function Post ({posts}){
         detail_id: newDetails.id,
         contact_id: newContact.id,
     })
+    function handleUpdate(e){
+        let key = e.target.name
+        let value = e.target.value
+        setNewPost({...newPost, [key]: value});
+    }
     function handlePost(e){
         let key = e.target.name
         setNewPost({...newPost, [key]: e.target.value})
@@ -59,10 +64,6 @@ export default function Post ({posts}){
     function handleSubmit(e){
         e.preventDefault()
 
-        console.log(newPost)
-        console.log(newDetails)
-        console.log(newPhone)
-        console.log(newContact)
         fetch("http://localhost:9292/posts",{
             method: "POST",
             headers: {"content-type" : "application/json"},

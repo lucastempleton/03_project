@@ -7,6 +7,11 @@ class PostController < ApplicationController
     get "/posts/:id" do
         Post.find(params[:id]).to_json
     end
+    patch "/posts/:id" do
+        post = Post.find(params[:id])
+        post.update(title: params[:title], price: params[:price,], city: params[:city])
+        post.to_json()
+    end
 
 
     post "/posts" do 

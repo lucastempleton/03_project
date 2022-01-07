@@ -32,18 +32,21 @@ function App() {
     fetchRequest();
   },[])
   return (
-      <div>
+      <div className="home-container">
         <nav>
-          <Link to ="/"> Home </Link>
-          <Link to ="/postslist"> Listings </Link>
-          <Link to ="/post"> Create a new post </Link>
+          <Link to ="/" className="home-button"> Home </Link>
+          <Link to ="/postslist" className="postings-button"> Listings </Link>
+          <Link to ="/post" className="post-button"> Create a new post </Link>
         </nav>
         <Routes> 
         <Route path="/postrender" element={<PostRender post={postToRender}/>}/>
         <Route path="/postslist" element={<PostsList posts={posts} changePostToRender={changePostToRender} />}/>
         <Route path="/post" element={<Post posts={posts} />}/>
-        <Route exact path="/" element={<SearchBar />}/>
-        <Route exact path="/" element={<HomePage />}/>
+        <Route exact path="/" element={
+          <div >
+            <SearchBar /> 
+            <HomePage />
+          </div>}/>
         </Routes>
        <div> Footer </div>
       </div>
