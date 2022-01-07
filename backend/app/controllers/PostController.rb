@@ -10,7 +10,6 @@ class PostController < ApplicationController
     patch "/posts/:id" do
         post = Post.find(params[:id])
         post.update(title: params[:title], price: params[:price,], city: params[:city])
-        post.to_json()
     end
 
 
@@ -31,7 +30,7 @@ class PostController < ApplicationController
         # binding.pry
         ## THEN TYPE params in the Pry Session
 
-        Post.create( contact_id: params[:contact_id], category: params[:category], title: params[:title], price: params[:price], city: params[:city], zipcode: params[:zipcode], description: params[:description], detail_id: params[:detail_id], posted_at: Time.now, img_url: params[:img_url])
+        Post.create( contact_id: params[:contact_id], category: params[:category], title: params[:title], price: params[:price], city: params[:city], zipcode: params[:zipcode], description: params[:description], detail_id: params[:detail_id], posted_at: Time.now, img_url: params[:img_url], user_id: 1)
 
     end
     delete "/posts/:id" do 

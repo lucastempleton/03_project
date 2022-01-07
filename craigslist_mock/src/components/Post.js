@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import ChooseCategory from "./sub-components/ChooseCategory"
 import PostingDetails from "./sub-components/PostingDetails"
 import ContactInfo from "./sub-components/ConactInfo"
 
 export default function Post ({posts}){
+    useEffect(() =>{
+        setNewDetails({...newDetails, id: posts.length + 1})
+        setNewPhone({...newPhone, id: posts.length + 1})
+        setNewContact({...newContact, id: posts.length + 1, phone_id: posts.length + 1})
+        setNewPost({...newPost, id: posts.length + 1, contact_id: posts.length + 1, detail_id: posts.length + 1})
+        console.log('updated ID to:', posts.length)
+    },[posts])
     const [newDetails, setNewDetails] = useState({
         id: posts.length + 1,
         cryptocurrency: false, 
@@ -15,7 +23,7 @@ export default function Post ({posts}){
         condition: "",
     });
     const [newPhone, setNewPhone] = useState({
-        id: posts.length + 1,
+        id: posts.length,
         showNumber: false,
         canCall: false,
         canText: false,
@@ -24,12 +32,12 @@ export default function Post ({posts}){
         name: "",
     });
     const [newContact, setNewContact] = useState({
-        id: posts.length + 1,
+        id: posts.length,
         email: "",
         phone_id: newPhone.id
     })
     const [newPost, setNewPost] = useState({
-        id: posts.length + 1,
+        id: posts.length,
         category: "",
         title: "",
         img_url: "",
@@ -40,11 +48,8 @@ export default function Post ({posts}){
         detail_id: newDetails.id,
         contact_id: newContact.id,
     })
-    function handleUpdate(e){
-        let key = e.target.name
-        let value = e.target.value
-        setNewPost({...newPost, [key]: value});
-    }
+    
+
     function handlePost(e){
         let key = e.target.name
         setNewPost({...newPost, [key]: e.target.value})
@@ -63,7 +68,7 @@ export default function Post ({posts}){
     }
     function handleSubmit(e){
         e.preventDefault()
-
+        
         fetch("http://localhost:9292/posts",{
             method: "POST",
             headers: {"content-type" : "application/json"},
@@ -126,7 +131,10 @@ export default function Post ({posts}){
                         <input type="checkbox" />
                          ok for others to contact you about other services, products or commercial interests
                     </label>
+                    <Link to="/postslist">
                     <button type="submit" onClick={(e) => handleSubmit(e)}>continue</button>
+                    </Link>
+                    
                 
             </form>
         </div>

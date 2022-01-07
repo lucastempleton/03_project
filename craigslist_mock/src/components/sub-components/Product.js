@@ -1,4 +1,11 @@
- export default function Product({post}){
+export default function Product({post}){
+     function deletion (product) {
+         fetch(`http://localhost:9292/product/${product.id}`, {
+           method: "DELETE"
+         })
+         .then(r=>r.json())
+         .then(log=>console.log(log))
+       }
         return( 
         <div ClassName="product">
             <div ClassName="product_info">
@@ -30,13 +37,7 @@
                 </div>
         </div>
         <img src="https://"alt=""/>
-        <button>Buy</button>
+        <button onClick={()=>deletion(post.id)}>Buy</button>
         </div>
         );
-        // function Deletion (product) {
-        //     fetch(`http://localhost:9292/product/${product.id}`, {
-        //       method: "DELETE"
-        //     })
-        //     deleteFromState(item)
-        //   }
     } 
